@@ -1,5 +1,11 @@
 /* assets/styles.css */
 
+body {
+    background-color: #d2e5cb;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+  }
+  
 .sidebar {
     position: fixed;
     top: 0;
@@ -24,6 +30,11 @@
 
 .subtitle-sidebar a:hover {
     color: #334b2a;
+}
+
+.custom-hr {
+    border-color: #888888;
+    opacity: 1;
 }
 
 .nav-pills .nav-link {
