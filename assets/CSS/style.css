@@ -1,0 +1,53 @@
+/* assets/styles.css */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 16rem;
+    padding: 2rem 1rem;
+    background-color: #4e7a3e;
+    color: white;
+}
+
+.subtitle-sidebar {
+    font-size: 15px;
+    color: #334b2a;
+}
+
+.subtitle-sidebar a {
+    color: #e98c00;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.subtitle-sidebar a:hover {
+    color: #334b2a;
+}
+
+.nav-pills .nav-link {
+    color: #fff;
+}
+
+.nav-pills .nav-link.active {
+    color: #fff;
+    background-color: #334b2a;
+}
+
+.page-content {
+    margin-left: 18rem;
+    margin-right: 2rem;
+    padding: 2rem 1rem;
+    background-color: #d2e5cb;
+}
+
+.button {
+    /* color: #fff; */
+    background-color: #80b06e;
+}
+
+.shadow-style {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
