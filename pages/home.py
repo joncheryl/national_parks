@@ -304,19 +304,26 @@ def display_bar(selected_park_code):
     monthly = monthly.sort_values("month_num")
     monthly["visits_rounded"] = monthly["visits"].astype(int).map(lambda x: f"{x:,}")
 
-    fig = px.bar(
-        monthly,
-        x="month_name",
-        y="visits",
-        title="Average Monthly Visits",
-        range_y=[0, 1.1 * max(monthly["visits"])],
-        text="visits_rounded",
-        color_discrete_sequence=["#4e7a3e"],
-    ).update_layout(
-        template="plotly_white",
-        xaxis_title="month",
-        yaxis_title="average visits",
-        xaxis={"tickangle": 45},
+    fig = (
+        px.bar(
+            monthly,
+            x="month_name",
+            y="visits",
+            title="Average Monthly Visits",
+            range_y=[0, 1.1 * max(monthly["visits"])],
+            text="visits_rounded",
+            color_discrete_sequence=["#4e7a3e"],
+            hover_name="month_name",
+            hover_data={"visits": ":.0f", "month_name": False, "visits_rounded": False},
+        )
+        # .update_traces(hovertemplate=None)
+        .update_layout(
+            template="plotly_white",
+            xaxis_title="month",
+            yaxis_title="average visits",
+            xaxis={"tickangle": 45},
+            margin=dict(l=40, r=30),
+        )
     )
 
     return fig
@@ -345,7 +352,11 @@ def display_graph_years(selected_park_code):
         title="Annual Visits",
         range_y=[0, 1.1 * max(yearly["visits"])],
         color_discrete_sequence=["#4e7a3e"],
-    ).update_layout(template="plotly_white", xaxis={"tickangle": 45})
+    ).update_layout(
+        template="plotly_white",
+        xaxis={"tickangle": 45},
+        margin=dict(l=40, r=30),
+    )
 
     return fig
 
@@ -378,11 +389,14 @@ def display_weather(selected_park_code):
         labels={
             "datatype": "",
         },
+        hover_data={"month_abbr": False}
     ).update_layout(
         template="plotly_white",
         xaxis_title="month",
         yaxis_title="temp (\u00b0F)",
         xaxis={"tickangle": 45},
+        hovermode="x unified",
+        margin=dict(l=40),
     )
 
     return fig
