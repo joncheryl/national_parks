@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://nps-dashboard.onrender.com/">
-    <img src="assets/logos/nps_logo.svg" width="50px">
+    <img src="https://nps-dashboard.onrender.com/assets/images/nps_logo.svg" width="50px">
     <h3 align="center">National Parks Service App</h3>
   </a>
 </div>
