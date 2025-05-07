@@ -54,11 +54,24 @@ body {
 }
 
 .button {
-    /* color: #fff; */
     background-color: #80b06e;
 }
 
 .shadow-style {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
+}
+
+/* Cards */
+.card-text {
+    text-align: center;
+    margin: 0 0;
+    padding: 0;
+}
+
+/* Charts */
+.chart-style {
+    border: 2px solid #fff;
+    border-radius: 8px;
+    box-shadow: 0 6px 8px rgba(89, 87, 87, 0.1);
 }

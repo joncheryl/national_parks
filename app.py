@@ -18,8 +18,8 @@ sidebar = html.Div(
         html.Hr(className="custom-hr"),
         dbc.Nav(
             [
-                dbc.NavLink("NPS Database", href="/", active="exact"),
-                dbc.NavLink("NPS Unit Info", href="/page-1", active="exact"),
+                dbc.NavLink("NPS Unit Info", href="/", active="exact"),
+                dbc.NavLink("NPS Distance Calculator", href="/page-1", active="exact"),
             ],
             vertical=True,
             pills=True,
