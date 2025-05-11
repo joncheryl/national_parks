@@ -19,7 +19,7 @@ sidebar = html.Div(
         dbc.Nav(
             [
                 dbc.NavLink("NPS Unit Info", href="/", active="exact"),
-                dbc.NavLink("NPS Distance Calculator", href="/page-1", active="exact"),
+                dbc.NavLink("NPS Distance Calculator", href="/page-table", active="exact"),
                 dbc.NavLink("NPS Map", href="/page-map", active="exact"),
             ],
             vertical=True,
