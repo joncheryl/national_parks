@@ -184,50 +184,50 @@ layout = dbc.Container(
 ####################
 # Callback for map that's centered at NPS unit.
 ####################
-@callback(
-    Output(component_id="map_id", component_property="figure"),
-    Input(component_id="dropdown", component_property="value"),
-)
-def display_map(selected_park_code):
-    """Update graph."""
+# @callback(
+#     Output(component_id="map_id", component_property="figure"),
+#     Input(component_id="dropdown", component_property="value"),
+# )
+# def display_map(selected_park_code):
+#     """Update graph."""
 
-    center_of_map = (
-        df_wiki.loc[df_wiki["park_code"] == selected_park_code, ["lat", "lon"]]
-        .iloc[0]
-        .to_dict()
-    )
+#     center_of_map = (
+#         df_wiki.loc[df_wiki["park_code"] == selected_park_code, ["lat", "lon"]]
+#         .iloc[0]
+#         .to_dict()
+#     )
 
-    if pd.isna(center_of_map["lat"]):
-        center_of_map["lat"] = 39
-        center_of_map["lon"] = -77
+#     if pd.isna(center_of_map["lat"]):
+#         center_of_map["lat"] = 39
+#         center_of_map["lon"] = -77
 
-    # Make column of dataframe for labeling of color legend.
-    df_wiki["acres"] = df_wiki["area_acres"].where(
-        df_wiki["park_code"] != selected_park_code, 10000000
-    )
-    # Make column of dataframe for labeling of sizes.
-    df_wiki["size"] = df_wiki["log_acres"].where(
-        df_wiki["park_code"] != selected_park_code, 10000000
-    )
+#     # Make column of dataframe for labeling of color legend.
+#     df_wiki["acres"] = df_wiki["area_acres"].where(
+#         df_wiki["park_code"] != selected_park_code, 10000000
+#     )
+#     # Make column of dataframe for labeling of sizes.
+#     df_wiki["size"] = df_wiki["log_acres"].where(
+#         df_wiki["park_code"] != selected_park_code, 10000000
+#     )
 
-    fig_map = px.scatter_map(
-        df_wiki,
-        lat="lat",
-        lon="lon",
-        size="size",
-        color="acres",
-        hover_name="park_name",
-        hover_data={col: False for col in df_wiki.columns},
-        color_continuous_scale=px.colors.cyclical.IceFire,
-        zoom=5,
-        map_style="basic",
-        center=center_of_map,
-    )
+#     fig_map = px.scatter_map(
+#         df_wiki,
+#         lat="lat",
+#         lon="lon",
+#         size="size",
+#         color="acres",
+#         hover_name="park_name",
+#         hover_data={col: False for col in df_wiki.columns},
+#         color_continuous_scale=px.colors.cyclical.IceFire,
+#         zoom=5,
+#         map_style="basic",
+#         center=center_of_map,
+#     )
 
-    fig_map.update_layout(map_style="open-street-map")
-    fig_map.update_layout(margin={"r": 13, "t": 13, "l": 13, "b": 13})
+#     fig_map.update_layout(map_style="open-street-map")
+#     fig_map.update_layout(margin={"r": 13, "t": 13, "l": 13, "b": 13})
 
-    return fig_map
+#     return fig_map
 
 
 ####################################
