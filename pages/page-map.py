@@ -120,7 +120,7 @@ def display_map(selected_park_code):
 ####################
 @callback(
     Output("url", "href"),
-    Input("map_id", "click_data"),
+    Input("map_id", "clickData"),
     prevent_initial_call=True,
 )
 def on_marker_click(click_data):
