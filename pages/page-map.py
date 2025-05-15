@@ -4,6 +4,7 @@ Dashboard for looking at the 'visibility' of different national parks.
 
 # %%%
 from dash import dcc, html, Input, Output, callback, register_page
+from dash.exceptions import PreventUpdate
 import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
@@ -41,6 +42,7 @@ register_page(__name__, path="/page-map")
 #######################################################################################
 layout = dbc.Container(
     [
+        dcc.Location(id="url", refresh=True),
         html.H4("Map of All National Park Service Units"),
         html.P("Select NPS Unit:"),
         dcc.Dropdown(
@@ -111,3 +113,26 @@ def display_map(selected_park_code):
     fig_map.update_layout(margin={"r": 13, "t": 13, "l": 13, "b": 13})
 
     return fig_map
+
+
+####################
+# Callback for going to info page
+####################
+@callback(
+    Output("url", "href"),
+    Input("map_id", "click_data"),
+    prevent_initial_call=True,
+)
+def on_marker_click(click_data):
+    """Redirect to dashboard page with appropriate info."""
+    if click_data is None:
+        raise PreventUpdate
+
+    park_name = click_data["points"][0]["hovertext"]
+    matched_row = df_wiki[df_wiki["park_name"] == park_name]
+
+    if not matched_row.empty:
+        park_code = matched_row["park_code"].values[0]
+        return f"/?park={park_code}"
+
+    raise PreventUpdate

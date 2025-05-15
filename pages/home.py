@@ -3,6 +3,7 @@ Dashboard for looking at the 'visibility' of different national parks.
 """
 
 # %%%
+from urllib.parse import parse_qs
 from dash import dcc, html, Input, Output, callback, register_page
 import dash_bootstrap_components as dbc
 import pandas as pd
@@ -44,6 +45,7 @@ register_page(__name__, path="/")
 #######################################################################################
 layout = dbc.Container(
     [
+        dcc.Location(id="url", refresh=False),
         html.H4("National Park Dashboard"),
         html.P("Select NPS Unit:"),
         dcc.Dropdown(
@@ -179,6 +181,22 @@ layout = dbc.Container(
     ],
     fluid=True,
 )
+
+
+####################################
+# Callback to sync dropdown and url search terms.
+####################################
+@callback(
+    Output("dropdown", "value"),
+    Input("url", "search"),
+)
+def sync_dropdown_with_url(search):
+    """Make dropdown menu same as search term in url."""
+    if not search:
+        return "ZION"  # default
+
+    query_params = parse_qs(search.lstrip("?"))
+    return query_params.get("park", ["ZION"])[0]
 
 
 ####################################
