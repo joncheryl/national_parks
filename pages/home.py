@@ -1,5 +1,5 @@
 """
-Dashboard for looking at the 'visibility' of different national parks.
+Dashboard for looking at the 'visit-ability' of different national parks.
 """
 
 # %%%
@@ -355,6 +355,7 @@ def display_weather(selected_park_code):
         title="Average Monthly Temps",
         subtitle="at lat/lon found on Wikipedia page",
         color="datatype",
+        color_discrete_sequence=["#EF553B", "#636EFA"],
         labels={
             "datatype": "",
         },
